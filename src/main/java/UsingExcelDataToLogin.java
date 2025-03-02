@@ -36,8 +36,8 @@ public class UsingExcelDataToLogin {
 
 // Enter data into login fields
         driver.findElement(By.id("email")).sendKeys(username);
-        driver.findElement(By.name("pass")).sendKeys(password);
-       // driver.findElement(By.id("loginButton")).click();
+        driver.findElement(By.id("pass")).sendKeys(password);
+
 
     }
 }
