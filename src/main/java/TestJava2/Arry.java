@@ -8,7 +8,7 @@ public class Arry {
 
         int[] a={1,5,7,9,19,16};
         int[] b={1,0,7,10,17,16};
-        ArrayList<Integer>alist =new ArrayList<Integer>();
+        ArrayList<Integer> alist =new ArrayList<Integer>();
         int i;
 
         com();
