@@ -8,6 +8,9 @@ import org.testng.Assert;
 public class Checkbox {
     public static void main(String[] args) throws InterruptedException {
 
+        String Path=System.getProperty("user.dir");
+        System.out.println(Path);
+
         System.setProperty("WebDriver.Chrome.Driver", "src/target/Drivers/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();

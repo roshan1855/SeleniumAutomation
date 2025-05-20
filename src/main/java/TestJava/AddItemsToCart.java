@@ -18,7 +18,7 @@ public class AddItemsToCart {
         //System.setProperty("webdriver.chrome.driver", Path + "src/target/Drivers/chromedriver.exe");
         // WebDriver driver=new ChromeDriver();
 
-        System.setProperty("WebDriver.Edge.Driver", "src/target/Drivers/msedgedriver.exe");
+        System.setProperty("WebDriver.Edge.Driver", "C:/Users/rosha/Drivers/msedgedriver.exe");
         WebDriver driver = new EdgeDriver();
 
         String filter_text= "samsung";
