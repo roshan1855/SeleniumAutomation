@@ -42,20 +42,29 @@ public class PlanetSpark {
         // Wait up to 30 minutes (1800 seconds) for the bold date element to appear
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(30));
         WebElement date = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//p[contains(@class, 'mb-1') and contains(@style, 'font-weight: bold') and      (contains(., '21 may 2025') or contains(., '22 may 2025') or contains(., '23 may 2025'))]")
+                By.xpath("//p[contains(@class, 'mb-1') and contains(@style, 'font-weight: bold') and      (contains(., '21 may 2025') or contains(., '22 may 2025') or contains(., '23 may 2025')  or contains(., '24 may 2025'))]")
 //                By.xpath("//p[contains(@class, 'mb-1') and contains(@style, 'font-weight: bold') and " +
 //                        "contains(., '21 may 2025') or contains(., '22 may 2025') or contains(., '23 may 2025'))]]/ancestor::div[contains(@class, 'my-slider-clb-wrapper')]" +
 //                        "//a[contains(@class, 'btn') and contains(text(), 'Accept')]")
         ));
-        WebElement acceptButton = date.findElement(By.xpath("./ancestor::div[contains(@class, 'my-slider-clb-wrapper')]\" +\n" +
-                "//                        \"//a[contains(@class, 'btn') and contains(text(), 'Accept')]"));
-        System.out.println("Div element text is" +acceptButton.getText());
-        acceptButton.click();
+        WebElement parentDiv = date.findElement(By.xpath("./ancestor::div[contains(@class, 'my-slider-clb-wrapper')]"));
+        System.out.println("Div element text is" +parentDiv.getText());
+        String outerHtml = parentDiv.getDomProperty("outerHTML");
+        System.out.println(outerHtml);
+        Thread.sleep(4000);
+        System.out.println("Print me before finding the accept button");
+        WebElement accept_button = parentDiv.findElement(By.xpath("//a"));
+        System.out.println("Accept Button is found");
+        accept_button.click();
+        System.out.println("Accept Button is clicked");
 
-        WebElement yesButton = driver.findElement(
-                By.xpath("//button[@type='button' and contains(@class, 'swal2-confirm') and contains(text(), 'Yes')]")
-        );
+        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(40));
+        WebElement yesButton = wait1.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//div/div/div[@class='swal2-actions']/button[contains(@class, 'swal2-confirm') and text()='Yes']")
+        ));
         yesButton.click();
+
+        System.out.println("Yes button is clicked successfully");
 
 
         //recomended code
@@ -67,6 +76,7 @@ public class PlanetSpark {
 //        ));
 //
 //        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+        //WebElement accept_button= parentDiv.findElement(By.xpath("//a[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'accept')]")).click();
 //
     }
 
